@@ -1,0 +1,51 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:grok="http://namespaces.zope.org/grok"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="collective.answers">
+
+  <!-- Include configuration for dependencies listed in setup.py -->
+  <includeDependencies package="." />
+
+  <!-- Grok the package to initialise schema interfaces and content classes -->
+  <grok:grok package="." />
+  
+  <include package=".browser" />
+  <include package=".extenders" />
+
+  <include package="collective.autopermission" />
+  <permission id="collective.answers.AddQuestion" title="Collective Answers: Add Question" />
+  <permission id="collective.answers.AddAnswer" title="Collective Answers: Add Answer" />
+
+  <i18n:registerTranslations directory="locales" />
+
+  <!-- Register an extension profile to make the product installable
+       in Plone -->
+  <genericsetup:registerProfile
+      name="default"
+      title="collective.answers"
+      directory="profiles/default"
+      description="Extension profile for Collective Answers"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
+  <!-- -*- extra stuff goes here -*- -->
+
+    <plone:behavior
+        title="Allow questions"
+        description="Allow questions"
+        provides=".allowquestions.IAllowQuestions"
+        for="plone.dexterity.interfaces.IDexterityContent"
+        />
+
+  <!-- event handlers -->
+  <subscriber
+      for="collective.answers.answer.IAnswer
+           zope.lifecycleevent.IObjectModifiedEvent"
+      handler=".eventhandlers.questionAnswered"
+      />
+
+</configure>

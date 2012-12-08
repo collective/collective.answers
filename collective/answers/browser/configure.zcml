@@ -1,0 +1,116 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="collective.answers">
+
+    <browser:resourceDirectory
+        name="collective.answers.resources"
+        directory="resources"
+        />
+
+    <!-- Question and Answer views and viewlet -->
+    <browser:viewlet
+        for="Products.CMFCore.interfaces._content.IContentish"
+        name="qaviewlet"
+        manager="plone.app.layout.viewlets.interfaces.IBelowContent"
+        class=".viewlets.QAViewlet"
+        permission="zope2.View"
+        />
+
+    <browser:page
+        for="*"
+        name="add-question"
+        class=".views.AddQuestionView"
+        permission="zope2.View"
+        template="templates/addform.pt"
+        />
+
+    <browser:page
+        for="*"
+        name="add-question-json"
+        class=".views.AddQuestionView"
+        attribute="addQuestionJSON"
+        permission="zope2.View"
+        />
+
+    <browser:page
+        for="*"
+        name="annotator-notify-json"
+        class=".views.AnnotatorNotify"
+        attribute="notifyJSON"
+        permission="zope2.View"
+        />
+    
+    <browser:page
+        for="*"
+        name="delete-question"
+        class=".views.DeleteQuestionView"
+        permission="zope2.View"
+        attribute="deleteQuestion"
+        />
+
+    <browser:page
+        for="*"
+        name="delete-question-json"
+        class=".views.DeleteQuestionView"
+        attribute="deleteQuestionJSON"
+        permission="zope2.View"
+        />
+
+    <browser:page
+        for="collective.answers.question.IQuestion"
+        name="add-answer"
+        class=".views.AddAnswerView"
+        permission="zope2.View"
+        template="templates/answereditor.pt"
+        />
+
+    <browser:page
+        for="*"
+        name="add-answer-json"
+        class=".views.AddAnswerView"
+        attribute="addAnswerJSON"
+        permission="zope2.View"
+        />
+
+    <browser:page
+        for="*"
+        name="delete-answer"
+        class=".views.DeleteAnswerView"
+        permission="zope2.View"
+        attribute="deleteAnswer"
+        />
+
+    <browser:page
+        for="*"
+        name="delete-answer-json"
+        class=".views.DeleteAnswerView"
+        attribute="deleteAnswerJSON"
+        permission="zope2.View"
+        />
+
+    <browser:page
+        for="*"
+        name="answered-message"
+        class=".views.AnsweredMessageView"
+        template="answeredmessage_templates/email.pt"
+        permission="zope2.View"
+        />
+
+    <browser:page
+        for="collective.answers.question.IQuestion"
+        name="render-question"
+        class=".views.AddAnswerView"
+        template="templates/question.pt"
+        permission="zope2.View"
+        />
+
+    <browser:page
+        for="collective.answers.answer.IAnswer"
+        name="render-answer"
+        class=".views.AddAnswerView"
+        template="templates/answer.pt"
+        permission="zope2.View"
+        />
+
+</configure>

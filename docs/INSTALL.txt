@@ -1,0 +1,17 @@
+collective.answers Installation
+-------------------------------
+
+To install collective.answers using zc.buildout and the plone.recipe.zope2instance
+recipe to manage your project, you can do this:
+
+* Add ``collective.answers`` to the list of eggs to install, e.g.:
+
+    [buildout]
+    ...
+    eggs =
+        ...
+        collective.answers
+       
+* Re-run buildout, e.g. with:
+
+    $ ./bin/buildout

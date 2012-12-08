@@ -1,0 +1,21 @@
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Cc: 
+To: tester@example.com
+From: admin@example.com
+Subject: Your question was answered.
+
+
+On Apr 25, 2012 you asked the question below on the page titled "Questions":
+
+    test question 01
+
+The answer to your question is:
+
+
+You can also see the answer to your question by following the link below:
+
+        http://nohost/plone/questions
+
+

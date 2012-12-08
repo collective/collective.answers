@@ -1,0 +1,25 @@
+<metal:render_answer define-macro="render_answer">
+<div class="commentBody answer"
+    tal:define="answer nocall:answer|nocall:context;
+                questionid questionid|answer/aq_parent/id"
+    tal:attributes="id answer/id">
+    <span tal:replace="structure answer/text/output|nothing">Answer text</span>
+    <div class="commentActions">
+        <form style="display: inline;" method="post"
+            action="@@delete-answer" name="delete-answer"
+            tal:attributes="action string:${context/absolute_url}">
+            <input type="hidden" id="collective.answers.qaviewlet.form.submitted"
+                name="collective.answers.qaviewlet.form.submitted" value="submitted" />
+            <input type="hidden" value="" name="questionid"
+                tal:attributes="value questionid">
+            <input type="hidden" value="" name="answerid"
+                tal:attributes="value answer/id">
+            <input type="hidden" value="delete-answer" name="action">
+            <input tal:condition="python:view.can_delete_answer(answer)"
+                type="submit" value="Delete" class="destructive allowMultiSubmit"
+                name="action.button"
+                tal:attributes="context_url context/absolute_url">
+        </form>
+    </div>
+</div>
+</metal:render_answer>

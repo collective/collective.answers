@@ -1,0 +1,16 @@
+<div id="collective-answers-container">
+    
+    <div tal:define="addview nocall:context/@@add-question"
+        tal:condition="view/is_enabled">
+        <div metal:use-macro="addview/index/macros/questionaddform" />
+    </div>
+
+    <tal:questions repeat="question view/questions">
+    <span tal:replace="structure question/@@render-question">
+        Rendered question
+    </span>
+    </tal:questions>
+
+</div>
+
+

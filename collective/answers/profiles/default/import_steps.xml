@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<import-steps>
+    <import-step id="collective.answers" version="20121208-01"
+                handler="collective.answers.setuphandlers.setupVarious"
+                title="collective answers Setup">
+        <dependency step="plone-content"/>
+        collective answers? setup steps.
+    </import-step>
+</import-steps>
